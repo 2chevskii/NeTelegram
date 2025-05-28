@@ -1,0 +1,27 @@
+root = true
+
+
+[*]
+
+charset = utf-8
+end_of_line = lf
+
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+indent_style = space
+indent_size = 2
+
+
+[*.cs]
+
+indent_size = 4
+max_line_length = 100
+
+csharp_wrap_before_declaration_rpar = true
+csharp_wrap_after_declaration_lpar = true
+
+csharp_wrap_before_primary_constructor_declaration_rpar = true
+csharp_wrap_after_primary_constructor_declaration_lpar = true
+
+csharp_wrap_before_invocation_rpar = true
