@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{BFD1D9
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		.gitattributes = .gitattributes
+		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
