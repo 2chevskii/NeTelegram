@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using NeTelegram.Commands;
 using NeTelegram.Commands.Extensions.Microsoft.DependencyInjection;
 using NeTelegram.Extensions.Microsoft.DependencyInjection;
 using NeTelegram.Extensions.Microsoft.Hosting;
@@ -33,14 +32,3 @@ builder
 var app = builder.Build();
 
 app.Run();
-
-
-[Command("test")]
-class TestCommand : CommandBase
-{
-    public override Task Invoke()
-    {
-        Console.WriteLine("Test command invoked with args: [{0}]", string.Join(", ", Args));
-        return Task.CompletedTask;
-    }
-}
