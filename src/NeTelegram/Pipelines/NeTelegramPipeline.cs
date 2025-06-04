@@ -28,7 +28,7 @@ public sealed class NeTelegramPipeline(
         _registrations.Clear();
     }
 
-    private Task OnUpdate(
+    private async Task OnUpdate(
         ITelegramBotClient client,
         Update update,
         CancellationToken cancellationToken
@@ -37,10 +37,10 @@ public sealed class NeTelegramPipeline(
         var context = new NeUpdateContext(this, client, update, cancellationToken);
         var middlewareQueue = configuration.GetUpdateMiddleware();
         using var middlewareFactoryScope = middlewareFactory.CreateScope(context);
-        return InvokeNext(middlewareFactoryScope, middlewareQueue);
+        await InvokeNext(middlewareFactoryScope, middlewareQueue);
     }
 
-    private Task OnError(
+    private async Task OnError(
         ITelegramBotClient client,
         Exception exception,
         HandleErrorSource source,
@@ -50,7 +50,7 @@ public sealed class NeTelegramPipeline(
         var context = new NeErrorContext(this, client, exception, source, cancellationToken);
         var middlewareQueue = configuration.GetErrorMiddleware();
         using var middlewareFactoryScope = middlewareFactory.CreateScope(context);
-        return InvokeNext(middlewareFactoryScope, middlewareQueue);
+        await InvokeNext(middlewareFactoryScope, middlewareQueue);
     }
 
     private async Task InvokeNext<TContext>(
